@@ -13,6 +13,14 @@
       span.footer-separator |
       span= _p('footer.theme') + ' '
       a(href='https://github.com/jerryc127/hexo-theme-butterfly')= 'Butterfly'
+
+  - let work_img = theme.footer.runtime.work_img
+  - let work_description = theme.footer.runtime.work_description
+  if theme.footer.runtime.enable
+    #workboard
+      img(src=`${work_img}`, alt=`${work_description}`, title=`${work_description}`, class="workSituationImg boardsign")
+      #runtimeTextTip(style="display:flex;justify-content:center;align-items:center;")
+
   if theme.footer.custom_text
     .footer_custom_text!=`${theme.footer.custom_text}`
 
@@ -76,3 +84,68 @@
       span= "好像写完一本我国著名的 四大名著 了！！！"
   else
     span= "还在努力更新中.. 加油！加油啦！"
+
+- let launch_time = theme.footer.runtime.launch_time
+- let offduty_img = theme.footer.runtime.offduty_img
+- let offduty_description = theme.footer.runtime.offduty_description
+script(async=true).
+  (function () {
+    var grt = new Date("#{launch_time}"); //设置网站上线时间
+    var now = new Date();
+    var dnum;
+    var hnum;
+    var mnum;
+    var snum;
+    var nowHour;
+
+    // 计算并更新天数、小时数、分钟数和秒数
+    function updateTime() {
+      now = new Date(); // 更新 now 的值
+      nowHour = now.getHours(); // 更新 nowHour 的值
+      var days = (now - grt) / 1000 / 60 / 60 / 24;
+      dnum = Math.floor(days);
+      var hours = (now - grt) / 1000 / 60 / 60 - 24 * dnum;
+      hnum = Math.floor(hours);
+      if (String(hnum).length == 1) {
+        hnum = "0" + hnum;
+      }
+      var minutes = (now - grt) / 1000 / 60 - 24 * 60 * dnum - 60 * hnum;
+      mnum = Math.floor(minutes);
+      if (String(mnum).length == 1) {
+        mnum = "0" + mnum;
+      }
+      var seconds = (now - grt) / 1000 - 24 * 60 * 60 * dnum - 60 * 60 * hnum - 60 * mnum;
+      snum = Math.round(seconds);
+      if (String(snum).length == 1) {
+        snum = "0" + snum;
+      }
+    }
+
+    // 更新网页中显示的网站运行时间
+    function updateHtml() {
+      const footer = document.getElementById("footer");
+      if (!footer) return
+      let currentTimeHtml = "";
+      if (nowHour < 18 && nowHour >= 9) {
+        // 如果是上班时间，默认就是"冰梦-上班摸鱼中.svg"图片，不需要更改
+        currentTimeHtml = `<div style="box-shadow: 0 0 5px rgba(28,69,218,.71);animation: flashlight 1s linear infinite alternate;width:fit-content;color:#fff;padding: 0 10px;border-radius: 10px;background-color: rgba(0, 0, 0, 0.7);"><font style=color:#23a6d5>&nbsp本站已苟活&nbsp</font>${dnum} <font style=color:#aff4df>&nbsp天&nbsp</font><span id='runtime'> ${hnum} <font style=color:#f391a9> &nbsp小时&nbsp</font> ${mnum} <font style=color:#fdb933>&nbsp分&nbsp</font> ${snum} <font style=color:#a3cf62>&nbsp秒</font> </span></div>`;
+      } else {
+        // 如果是下班时间，插入"冰梦-下班啦.svg"图片
+        let img = document.querySelector("#workboard .workSituationImg");
+        img.src = "!{offduty_img}";
+        img.title = "#{offduty_description}";
+        img.alt = "#{offduty_description}";
+        currentTimeHtml = `<div style="box-shadow: 0 0 5px rgba(28,69,218,.71);animation: flashlight 1s linear infinite alternate;width:fit-content;color:#fff;padding: 0 10px;border-radius: 10px;background-color: rgba(0, 0, 0, 0.7);"><font style=color:#23a6d5>&nbsp本站已苟活&nbsp</font>${dnum} <font style=color:#aff4df>&nbsp天&nbsp</font><span id='runtime'> ${hnum} <font style=color:#f391a9> &nbsp小时&nbsp</font> ${mnum} <font style=color:#fdb933>&nbsp分&nbsp</font> ${snum} <font style=color:#a3cf62>&nbsp秒</font> </span></div>`;
+
+      }
+
+      if (document.getElementById("runtimeTextTip")) {
+        document.getElementById("runtimeTextTip").innerHTML = currentTimeHtml;
+      }
+    }
+
+    setInterval(() => {
+      updateTime();
+      updateHtml();
+    }, 1000);
+  })();
