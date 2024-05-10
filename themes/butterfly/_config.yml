@@ -797,7 +797,7 @@ preloader:
 # wordcount (字数统统计)
 # see https://butterfly.js.org/posts/ceeb73f/#字數統計
 wordcount:
-  enable: false
+  enable: true
   post_wordcount: true
   min2read: true
   total_wordcount: true
@@ -941,7 +941,7 @@ CDN:
   # The CDN provider of internal scripts (主題內部 js 的 cdn 配置)
   # option: local/jsdelivr/unpkg/cdnjs/custom/cbd/onmicrosoft/anheyu
   # Dev version can only choose. ( dev版的主題只能设置为 local )
-  internal_provider: local
+  internal_provider: onmicrosoft
 
   # The CDN provider of third party scripts (第三方 js 的 cdn 配置)
   # option: local/jsdelivr/unpkg/cdnjs/custom/cbd/onmicrosoft/anheyu
@@ -953,7 +953,7 @@ CDN:
 
   # Custom format
   # For example: https://cdn.staticfile.org/${cdnjs_name}/${version}/${min_cdnjs_file}
-  custom_format:
+  custom_format: https://npm.elemecdn.com/${name}@latest/${file}
 
   option:
     # abcjs_basic_js:
