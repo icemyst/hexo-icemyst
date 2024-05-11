@@ -1,0 +1,5 @@
+#nav #menus a:hover {
+    background-color: var(--default-bg-color);
+    border-radius: 25px;
+    box-shadow: 0 8px 12px -3px #49b1f523;
+}

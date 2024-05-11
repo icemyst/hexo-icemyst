@@ -15,7 +15,7 @@ if hexo-config('darkmode.enable') || hexo-config('display_mode') == 'dark'
     --tab-button-hover-bg: lighten(#121212, 15)
     --tab-button-active-bg: #121212
     --card-bg: #121212
-    --sidebar-bg: #121212
+    --sidebar-bg: rgba(0,0,0,0.8)
     --btn-hover-color: lighten(#121212, 40)
     --btn-color: alpha(#FFFFFF, .7)
     --btn-bg: lighten(#121212, 5)
@@ -62,11 +62,11 @@ if hexo-config('darkmode.enable') || hexo-config('display_mode') == 'dark'
         background-color: #525252
         color: #e2f1ff
 
-    // 頭部
+    // 头部
     #page-header
       &.nav-fixed > #nav,
       &.not-top-img > #nav
-        background: alpha(#121212, .8)
+        background: var(--sidebar-bg)
         box-shadow: 0 5px 6px -5px rgba(133, 133, 133, 0)
 
     #post-comment
