@@ -128,6 +128,7 @@
       background: rgba(255, 255, 255, .8)
       box-shadow: 0 5px 6px -5px alpha($grey, .6)
       transition: transform .2s ease-in-out, opacity .2s ease-in-out
+      color: var(--font-color)
 
       #blog-info
         color: var(--font-color)
@@ -138,19 +139,12 @@
         .site-name
           text-shadow: none
 
-      a,
-      #toggle-menu
-        color: var(--font-color)
-        text-shadow: none
-
-        &:hover
-          color: $light-blue
-
     &.fixed
       #nav
         top: 0
         transition: all .5s
-        outline: 1px solid #42444a
+        // outline: 1px solid #42444a
+        outline: 1px solid var(--dark-grey)
         transform: translateZ(0)
 
   &.nav-visible:not(.fixed)
@@ -243,8 +237,9 @@
           display: none
 
     a
-      color: var(--light-grey)
+      color: $text-hover
       transition: all .3s ease-out
+
 
       &:hover
         color: $text-hover
@@ -294,7 +289,7 @@
       color: var(--white)
 
   a
-    color: var(--light-grey)
+    color: var(--font-color)
 
     &:hover
       color: var(--white)
@@ -302,6 +297,7 @@
   .site-name
     text-shadow: 2px 2px 4px rgba($dark-black, .15)
     font-weight: bold
+    transition: 0.3s
 
   .menus_items
     display: inline

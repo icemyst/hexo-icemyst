@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
-   * justified-gallery 圖庫排版
+   * justified-gallery 图库排版
    */
 
   const fetchUrl = async (url) => {
@@ -354,69 +354,71 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
-   * 滾動處理
+   * 滚动处理函数
    */
   const scrollFn = () => {
-    const $rightside = document.getElementById('rightside')
-    const innerHeight = window.innerHeight + 56
-    let initTop = 0
-    const $header = document.getElementById('page-header')
-    const isChatBtn = typeof chatBtn !== 'undefined'
-    const isShowPercent = GLOBAL_CONFIG.percent.rightside
+    const $rightside = document.getElementById('rightside'); // 获取右侧栏元素
+    const innerHeight = window.innerHeight + 56; // 浏览器窗口高度加上一定值
+    let initTop = 0; // 初始滚动位置
+    const $header = document.getElementById('page-header'); // 获取页面头部元素
+    const isChatBtn = typeof chatBtn !== 'undefined'; // 检查是否存在聊天按钮
+    const isShowPercent = GLOBAL_CONFIG.percent.rightside; // 检查是否显示右侧百分比
 
-    // 當滾動條小于 56 的時候
+    // 如果页面内容高度小于浏览器窗口高度加上一定值，则显示右侧栏
     if (document.body.scrollHeight <= innerHeight) {
-      $rightside.classList.add('rightside-show')
-      return
+      $rightside.classList.add('rightside-show');
+      return;
     }
 
-    // find the scroll direction
+    // 检测滚动方向的函数
     const scrollDirection = currentTop => {
-      const result = currentTop > initTop // true is down & false is up
-      initTop = currentTop
-      return result
-    }
+      const result = currentTop > initTop; // true 表示向下滚动，false 表示向上滚动
+      initTop = currentTop;
+      return result;
+    };
 
-    let flag = ''
+    let flag = ''; // 滚动标志
     const scrollTask = btf.throttle(() => {
-      const currentTop = window.scrollY || document.documentElement.scrollTop
-      const isDown = scrollDirection(currentTop)
-      if (currentTop > 56) {
-        if (flag === '') {
-          $header.classList.add('nav-fixed')
-          $rightside.classList.add('rightside-show')
+      const currentTop = window.scrollY || document.documentElement.scrollTop; // 获取当前滚动位置
+      const isDown = scrollDirection(currentTop); // 检测滚动方向
+      if (currentTop > 56) { // 如果滚动位置超过一定值
+        if (flag === '') { // 如果滚动标志为空
+          $header.classList.add('nav-fixed'); // 固定导航栏
+          $rightside.classList.add('rightside-show'); // 显示右侧栏
         }
 
-        if (isDown) {
+        if (isDown) { // 如果是向下滚动
           if (flag !== 'down') {
-            $header.classList.remove('nav-visible')
-            isChatBtn && window.chatBtn.hide()
-            flag = 'down'
+            $pageName.classList.add('#page-name');
+            $header.classList.remove('nav-visible'); // 隐藏导航栏
+            isChatBtn && window.chatBtn.hide(); // 隐藏聊天按钮（如果存在）
+            flag = 'down'; // 更新滚动标志为向下滚动
           }
-        } else {
+        } else { // 如果是向上滚动
           if (flag !== 'up') {
-            $header.classList.add('nav-visible')
-            isChatBtn && window.chatBtn.show()
-            flag = 'up'
+            $header.classList.add('nav-visible'); // 显示导航栏
+            isChatBtn && window.chatBtn.show(); // 显示聊天按钮（如果存在）
+            flag = 'up'; // 更新滚动标志为向上滚动
           }
         }
-      } else {
-        flag = ''
-        if (currentTop === 0) {
-          $header.classList.remove('nav-fixed', 'nav-visible')
+      } else { // 如果滚动位置小于等于一定值
+        flag = '';
+        if (currentTop === 0) { // 如果滚动到顶部
+          $header.classList.remove('nav-fixed', 'nav-visible'); // 移除固定导航栏和显示导航栏的类名
         }
-        $rightside.classList.remove('rightside-show')
+        $rightside.classList.remove('rightside-show'); // 移除右侧栏显示类名
       }
 
-      isShowPercent && rightsideScrollPercent(currentTop)
+      isShowPercent && rightsideScrollPercent(currentTop); // 检查是否显示右侧百分比
 
       if (document.body.scrollHeight <= innerHeight) {
-        $rightside.classList.add('rightside-show')
+        $rightside.classList.add('rightside-show'); // 如果页面内容高度小于浏览器窗口高度加上一定值，则显示右侧栏
       }
-    }, 300)
+    }, 300);
 
-    btf.addEventListenerPjax(window, 'scroll', scrollTask, { passive: true })
-  }
+    btf.addEventListenerPjax(window, 'scroll', scrollTask, { passive: true }); // 添加滚动事件监听
+  };
+
 
   /**
   * toc,anchor
@@ -437,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function () {
       $tocPercentage = $cardTocLayout.querySelector('.toc-percentage')
       isExpand = $cardToc.classList.contains('is-expand')
 
-      // toc元素點擊
+      // toc元素点击
       const tocItemClickFn = e => {
         const target = e.target.closest('.toc-link')
         if (!target) return
@@ -661,7 +663,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
-   * 網頁運行時間
+   * 网页运行时间
    */
   const addRuntime = () => {
     const $runtimeCount = document.getElementById('runtimeshow')
@@ -672,7 +674,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
-   * 最後一次更新時間
+   * 最后一次更新时间
    */
   const addLastPushDate = () => {
     const $lastPushDateItem = document.getElementById('last-push-date')
