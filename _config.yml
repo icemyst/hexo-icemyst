@@ -119,8 +119,7 @@ deploy:
 - type: git
   repo:
    github: git@github.com:eudav/eudav.github.io.git
-   # coding:
-  branch: master
+  branch: main
 
 
 # 追番插件
