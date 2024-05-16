@@ -389,7 +389,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (isDown) { // 如果是向下滚动
           if (flag !== 'down') {
-            $pageName.classList.add('#page-name');
             $header.classList.remove('nav-visible'); // 隐藏导航栏
             isChatBtn && window.chatBtn.hide(); // 隐藏聊天按钮（如果存在）
             flag = 'down'; // 更新滚动标志为向下滚动

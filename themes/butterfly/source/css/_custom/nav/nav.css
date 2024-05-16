@@ -11,105 +11,102 @@
 /* 网站标题 */
 
 #nav .site-name::before {
-    opacity: 0;
+    display: none;
     background-color: var(--default-bg-color) !important;
     border-radius: 50px;
     transition: .3s;
     position: absolute;
-    display: flex;
     padding: 0 28px;
     top: 50%;
-    /* 垂直方向上居中 */
     transform: translateY(-50%);
-    /* 向上移动一半自身高度 */
     content: "\f015";
     font-family: "Font Awesome 6 Free";
     color: #fff;
 }
 
 #nav .site-name:hover::before {
-    opacity: 1;
+    display: block;
     scale: 1.03;
 }
 
+/* 顶部按钮 */
 
-/* 回到顶部按钮 */
 .mask-name-container {
     font-weight: bold;
-    display: flex;
-    align-items: center;
     max-width: 1200px;
     width: 50%;
     height: 100%;
     position: absolute;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
     left: 50%;
     transform: translateX(-50%);
+    overflow: hidden;
 }
 
 #page-name::before {
-    position: absolute;
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+    content: '回到顶部';
+    left: 50%;
+    transform: translateX(-50%);
     border-radius: 50px;
+    padding: 0 30px;
     color: white !important;
-    top: 0;
-    left: 0;
-    content: "回到顶部";
     background-color: var(--default-bg-color);
-    transition: all 0.3s;
-    opacity: 0;
     box-shadow: 0 0 3px var(--default-bg-color);
+    transition: .3s;
+    display: none;
 }
 
 #page-name:hover:before {
-    opacity: 1;
-}
-
-#name-container {
-    transition: all 0.3s;
+    display: block;
 }
 
 #name-container:hover {
+    /* scale: 1.03 */
     transform: translateX(-50%) scale(1.03);
+}
+
+#name-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 #page-name {
     position: relative;
-    padding: 0 30px;
     -webkit-animation-timing-function: ease-out;
-}
-
-center#name-container {
-    position: absolute;
-    width: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    height: 100%;
+    display: flex;
 }
 
 .nav-fixed.nav-visible #name-container {
-    transition: 0.3s;
+    transition: .3s;
     transform: translate(-50%, 60px);
 }
 
 .nav-fixed.nav-visible #menus .menus_items {
     transform: translate(-50%);
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .nav-fixed #menus .menus_items {
     transform: translate(-50%, -60px);
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .nav-fixed #name-container {
-    font-weight: bold;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.3s;
+    transition: .3s;
+}
+
+#page-header:not(.nav-fixed) #name-container {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mask-name-container {
+        display: none;
+    }
 }
