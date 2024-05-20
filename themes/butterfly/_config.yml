@@ -948,8 +948,8 @@ inject:
   head:
     # - <link rel="stylesheet" href="/xxx.css">
   bottom:
-    # 页脚时间
-    # - <script src="/js/runtime/runtime.js"></script>
+    # 首页分类
+    # - <script async src="https://unpkg.com/js-heo@1.0.11/categoryBar/categoryBar.js"></script>
 
 # CDN
 # Don't modify the following settings unless you know how they work

@@ -1,0 +1,10 @@
+#categoryBar
+  #category-bar.category-bar
+      #catalog-bar
+        #catalog-list
+            .catalog-list-item
+              a(href="/") 首页
+            .category-lists!= list_categories()
+              //- .category-bar-next#category-bar-next(onclick="btf.scrollCategoryBarToRight()")
+                i.fas.fa-angles-right
+        a.catalog-more(href="/categories/")!= '更多'

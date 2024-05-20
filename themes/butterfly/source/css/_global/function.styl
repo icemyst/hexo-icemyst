@@ -52,25 +52,13 @@
   list-style: none
 
   li
+    display: inline-block
     position: relative
-    padding: .12em .4em .12em 1.4em
 
     &:hover
       &:before
         border-color: var(--pseudo-hover)
 
-    &:before
-      position: absolute
-      top: .67em
-      left: 0
-      width: w = .43em
-      height: h = w
-      border: .5 * w solid $light-blue
-      border-radius: w
-      background: transparent
-      content: ''
-      cursor: pointer
-      transition: all .3s ease-out
 
 .custom-hr
   position: relative
