@@ -70,6 +70,9 @@ beautify()
     @extend .custom-hr
 
 #article-container
+  width: calc(100% - 26px)
+  padding: 0 18px 35px
+  margin: 0 auto
   word-wrap: break-word
   overflow-wrap: break-word
 
@@ -157,6 +160,8 @@ beautify()
 
 #post
   .tag_share
+    width: calc(100% - 26px)
+    margin: 2rem auto
     &:after
       display: block
       clear: both
@@ -198,8 +203,9 @@ beautify()
           line-height: w
 
   .post-copyright
+    width: calc(100% - 26px)
     position: relative
-    margin: 40px 0 10px
+    margin: 0 auto
     padding: 10px 16px
     border: 1px solid var(--light-grey)
     transition: box-shadow .3s ease-in-out
